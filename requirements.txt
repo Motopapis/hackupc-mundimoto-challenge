@@ -1,3 +1,4 @@
 setuptools
 psycopg2-binary
 torch
+flask
