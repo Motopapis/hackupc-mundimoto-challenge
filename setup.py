@@ -9,6 +9,9 @@ setup(
 	install_requires=[
 		"setuptools",
 		"psycopg2-binary",
-		"torch"
+		"torch",
+		"pandas",
+		"numpy",
+		"sklearn"
 	]
 )
