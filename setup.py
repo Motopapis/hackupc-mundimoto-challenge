@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
 	name="hackupc-mundimoto-challenge",
-	version="0.0.1",
+	version="0.1",
 	packages=["src", "test", "utils"],
 	install_requires=[
 		"setuptools",
@@ -12,6 +12,7 @@ setup(
 		"torch",
 		"pandas",
 		"numpy",
-		"sklearn"
+		"sklearn",
+		"flask"
 	]
 )
