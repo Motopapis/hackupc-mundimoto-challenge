@@ -1,5 +1,4 @@
 import pandas as pd
-import numpy as np
 from User import User
 from Point5d import Point5d
 from Vector5d import vector_5d
@@ -38,14 +37,33 @@ if __name__ == '__main__':
     print(minFuel)
     print(maxFuel)
     userList = []
+
+    unique_brands = []
+    model_relation = {}
+
+    for entry in data["BRAND"]:
+        if entry not in unique_brands:
+            print(f'entering unique brand {entry}')
+            unique_brands.append(entry)
+    
+    for brand in unique_brands:
+        model_relation[brand] = []
+        for entry in data[data["BRAND"] == brand]["MODEL"]:
+            if entry not in model_relation[brand]:
+                print(f'entering unique model {entry}')
+                model_relation[brand].append(entry)
+
+
     for i in range(1000):
         randomPrice = random.randint(minPrice, maxPrice)
-        randomBrand = random.randint(minBrand, maxBrand)
-        randomModel = random.randint(minModel, maxModel)
+        randomBrandIndex = random.randint(0, len(unique_brands)-1)
+        randomBrand = unique_brands[randomBrandIndex]
+        randomModelIndex = random.randint(0, len(model_relation[randomBrand])-1)
+        randomModel = model_relation[randomBrand][randomModelIndex]
         randomYear = random.randint(minYear, maxYear)
         randomFuel = random.randint(minFuel, maxFuel)
         userPoint = Point5d(randomPrice, randomBrand, randomModel, randomYear, randomFuel)
-        tolerance = random.randint(5000, 8000)
+        tolerance = random.randint(8000, 9000)
         print(f"Generating User({randomPrice}, {randomBrand}, {randomModel}, {randomYear}, {randomFuel}, {tolerance})")
         user = User(id=i, point5d = userPoint, tolerance = tolerance)
         userList.append(user)
