@@ -8,6 +8,7 @@ setup(
 	packages=["src", "test", "utils"],
 	install_requires=[
 		"setuptools",
-		"psycopg2-binary"
+		"psycopg2-binary",
+		"torch"
 	]
 )
